@@ -1,0 +1,49 @@
+@import '../../../sass/abstracts/variables.scss';
+@import '../../../sass/abstracts/mixins.scss';
+
+.header {
+  background-image: linear-gradient(to bottom, rgba($color-black, 0.2), rgba($color-black, 0.2)), url(/images/0a.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  position: relative;
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    height: 100vh;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 90%, 0 95%);
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 90%, 0 95%);
+  }
+
+  @include respond(tab-land) {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 92%, 0 95%);
+  }
+
+  .logoBox {
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    transform: translate(-50%, -50%);
+
+    @include respond(tab-land) {
+      bottom: 6%;
+    }
+
+    @include respond(tab-port) {
+      bottom: 10%;
+    }
+  }
+
+  .logo {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .textBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
+}

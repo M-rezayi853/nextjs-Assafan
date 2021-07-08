@@ -1,0 +1,74 @@
+@import '../../sass/abstracts/variables.scss';
+@import '../../sass/abstracts/mixins.scss';
+
+.sectionAbout {
+  background-color: $color-section-bg;
+  padding: 20rem 0 15rem 0;
+  margin-top: -10rem;
+
+  @include respond(tab-land) {
+    padding: 15rem 0 15rem 0;
+    margin-top: -15rem;
+  }
+
+  @include respond(tab-port) {
+    padding: 10rem 0 30rem 0;
+    margin-top: -10rem;
+  }
+
+  .composition {
+    position: relative;
+
+    @include respond(tab-port) {
+      margin-bottom: 5rem;
+    }
+
+    .photo {
+      width: 25rem;
+      position: absolute;
+      border-radius: 0.3rem;
+      transition: all 0.4s;
+      box-shadow: 0 1rem 1.5rem rgba($color-black, 0.3);
+      outline-offset: 2rem;
+      display: flex;
+      overflow: hidden;
+
+      &P1 {
+        top: 0;
+        left: 0;
+      }
+
+      &P2 {
+        top: 6rem;
+        left: 25%;
+        z-index: 2;
+      }
+
+      &P3 {
+        top: -1rem;
+        right: 5rem;
+      }
+
+      &P4 {
+        top: 13rem;
+        left: 5rem;
+      }
+
+      &P5 {
+        top: 12rem;
+        right: 0;
+      }
+
+      &:hover {
+        z-index: 3;
+        transform: scale(1.05) translateY(-0.3rem);
+        box-shadow: 0 1.5rem 2rem rgba($color-black, 0.3);
+        outline: 1rem solid $color-primary;
+      }
+    }
+
+    &:hover .photo:not(:hover) {
+      transform: scale(0.98);
+    }
+  }
+}

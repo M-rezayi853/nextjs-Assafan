@@ -1,0 +1,200 @@
+@import '../../sass/abstracts/variables.scss';
+@import '../../sass/abstracts/mixins.scss';
+
+.card {
+  -moz-perspective: 150rem;
+  perspective: 150rem;
+  position: relative;
+  height: 45rem;
+
+  .side {
+    height: 45rem;
+    transition: all 0.8s ease;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    border-radius: 0.3rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+
+    &Front {
+      background-color: $color-white;
+    }
+
+    &Back {
+      transform: rotateY(180deg);
+      background-image: linear-gradient(
+        to bottom right,
+        rgba($color-primary-light, 0.9),
+        rgba($color-primary-dark, 0.9)
+      );
+    }
+  }
+
+  &:hover .sideFront {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover .sideBack {
+    transform: rotateY(0);
+  }
+
+  // FRONT SIDE
+  .picture {
+    background-size: cover;
+    height: 22rem;
+    border-radius: 0.3rem 0.3rem 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 95%, 0 100%);
+    background-blend-mode: screen;
+    background-position: center;
+
+    &P1 {
+      background-image: url(/images/6b.jpg);
+    }
+
+    &P2 {
+      background-image: url(/images/10b.jpg);
+    }
+
+    &P3 {
+      background-image: url(/images/11b.jpg);
+    }
+  }
+
+  .heading {
+    font-size: 2rem;
+    color: $color-white;
+    font-weight: 300;
+    text-transform: uppercase;
+    position: absolute;
+    right: 2.5rem;
+    top: 15rem;
+    width: 70%;
+    text-align: right;
+
+    &Span {
+      padding: 0.5rem 1.5rem;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+
+      &S1 {
+        background-image: linear-gradient(
+          to bottom right,
+          rgba($color-primary-light, 0.7),
+          rgba($color-primary-dark, 0.7)
+        );
+      }
+    }
+  }
+
+  .details {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 1rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 0.1rem solid $color-white-dark;
+        }
+      }
+    }
+  }
+
+  // BACK SIDE
+  .cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .priceBox {
+    text-align: center;
+    color: $color-white;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .priceOnly {
+    font-size: 1.8rem;
+  }
+
+  .priceValue {
+    font-size: 7rem;
+    margin-bottom: 5rem;
+    font-weight: 300;
+  }
+
+  // RESPONSIVE
+  //@include respond(tab-port) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    & {
+      height: auto;
+      box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+      border-radius: 0.3rem;
+      background-color: $color-white;
+    }
+
+    .side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+      backface-visibility: visible;
+
+      &Back {
+        transform: none;
+        clip-path: polygon(0 0, 50% 5%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover .sideFront {
+      transform: none;
+    }
+
+    &:hover .sideBack {
+      transform: none;
+    }
+
+    .details {
+      padding: 1rem 3rem;
+    }
+
+    // BACK SIDE STYLING
+    .cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    .heading {
+      width: 55%;
+    }
+
+    .priceOnly {
+      @include respond(tab-port) {
+        font-size: 1.7rem;
+      }
+    }
+
+    .priceValue {
+      @include respond(tab-port) {
+        font-size: 5rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+  }
+}

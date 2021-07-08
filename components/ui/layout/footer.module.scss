@@ -1,0 +1,72 @@
+@import '../../../sass/abstracts/variables.scss';
+@import '../../../sass/abstracts/mixins.scss';
+
+.footer {
+  background-color: $color-footer-bg;
+  padding: 5rem 0 7rem 0;
+  @include clearfix;
+
+  .logoBox {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .logo {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .nav {
+    float: left;
+    border-top: 0.1rem solid $color-gray-light;
+    padding-top: 1.5rem;
+
+    @include respond(tab-port) {
+      text-align: center;
+    }
+  }
+
+  .list {
+    list-style: none;
+    font-size: 1.6rem;
+  }
+
+  .item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+
+  .link {
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: $color-gray-too-light;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    &:hover,
+    &:active {
+      transform: rotate(4deg) scale(1.2);
+      background-color: $color-footer-bg;
+      color: $color-primary;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+    }
+  }
+
+  .text {
+    float: right;
+    width: 80%;
+    border-top: 0.1rem solid $color-gray-light;
+    padding-top: 1.5rem;
+
+    @include respond(tab-port) {
+      margin-top: 3rem;
+      width: 100%;
+    }
+  }
+}

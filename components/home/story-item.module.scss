@@ -1,0 +1,91 @@
+@import '../../sass/abstracts/variables.scss';
+@import '../../sass/abstracts/mixins.scss';
+
+.story {
+  background-color: rgba($color-white, 0.8);
+  width: 75%;
+  margin: 0 auto;
+  padding: 5rem 7rem;
+  // clip-path: polygon(0 0, 100 0, 95% 50%, 100% 100%, 0 100%, 5% 50%);
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    clip-path: polygon(0 0, 100% 0, 97% 50%, 100% 100%, 0 100%, 3% 50%);
+  }
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem 4rem 4rem 2rem;
+  }
+
+  .shape {
+    float: left;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+
+    @supports (clip-path: circle(50% at 50% 50%)) or
+      (-webkit-clip-path: circle(50% at 50% 50%)) {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      border-radius: unset;
+    }
+
+    @include respond(tab-port) {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
+  .img {
+    transform: scale(1.1);
+    transition: all 0.5s;
+
+    @include respond(tab-port) {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
+  .caption {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: $color-white;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+
+    @include respond(tab-port) {
+      font-size: 1.4rem;
+      font-weight: 400;
+      backface-visibility: visible;
+    }
+  }
+
+  .text {
+    padding: 1rem;
+    transform: translateX(2rem);
+  }
+
+  &:hover .caption {
+    opacity: 1;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover .img {
+    transform: scale(1);
+    filter: blur(0.3rem) brightness(70%);
+  }
+}
